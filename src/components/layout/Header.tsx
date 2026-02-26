@@ -80,14 +80,14 @@ export default function Header({ locale, translations: t }: HeaderProps) {
       >
         <button
           onClick={() => scrollTo("#hero")}
-          className="relative z-10"
+          className="relative z-50"
         >
           <Image
             src="/images/logo-white.png"
             alt="Milano Drinks Factory"
             width={480}
             height={120}
-            className="h-12 md:h-14 w-auto"
+            className="h-36 md:h-[168px] w-auto"
             priority
           />
         </button>
@@ -111,7 +111,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+          className="lg:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
           aria-label="Toggle menu"
         >
           <span
@@ -134,7 +134,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
       {/* Mobile overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-primary-dark/98 transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 z-40 bg-primary-dark transition-opacity duration-300 ${
           mobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
