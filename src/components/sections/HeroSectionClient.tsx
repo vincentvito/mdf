@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Button from "@/components/ui/Button";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import heroImage from "../../../public/images/hero-bg.jpg";
 
 interface HeroSectionClientProps {
   translations: {
@@ -26,12 +27,14 @@ export default function HeroSectionClient({
     <>
       {/* ── Background image ── */}
       <Image
-        src="/images/hero-bg.jpg"
+        src={heroImage}
         alt={t.imageAlt}
         fill
         className="object-cover"
         priority
         sizes="100vw"
+        quality={75}
+        placeholder="blur"
       />
 
       {/* ── Dark overlay for text readability ── */}
