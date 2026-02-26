@@ -52,7 +52,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
   const scrollTo = (href: string) => {
     if (lenis) {
-      lenis.scrollTo(href, { offset: -80 });
+      lenis.scrollTo(href, { offset: -144 });
     } else {
       const id = href.replace("#", "");
       const el = document.getElementById(id);
@@ -77,7 +77,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
       >
         <div
           className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300"
-          style={{ height: `${80 - scrollProgress * 8}px` }}
+          style={{ height: `${144 - scrollProgress * 8}px` }}
         >
           <button
             onClick={() => scrollTo("#hero")}
@@ -86,9 +86,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             <Image
               src="/images/logo-white.png"
               alt="Milano Drinks Factory"
-              width={80}
-              height={80}
-              className="h-16 w-auto transition-all duration-300"
+              width={160}
+              height={160}
+              className="h-32 w-auto transition-all duration-300"
               priority
             />
           </button>
@@ -142,14 +142,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col items-center justify-center h-full gap-6">
-          <Image
-            src="/images/logo-white.png"
-            alt="Milano Drinks Factory"
-            width={120}
-            height={120}
-            className="h-28 w-auto mb-4"
-          />
+        <nav className="flex flex-col items-center justify-center h-full gap-8">
           {NAV_SECTIONS.map((link) => (
             <button
               key={link.href}

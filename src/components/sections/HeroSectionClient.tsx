@@ -41,7 +41,7 @@ export default function HeroSectionClient({
       <div className="absolute inset-0 bg-black/50" />
 
       {/* ── Centered content ── */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-6 pt-20 pb-8 lg:pt-20 lg:pb-12">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-6 pt-36 pb-8 lg:pt-36 lg:pb-12">
         <div className="max-w-3xl text-center mx-auto">
           <motion.h1
             className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-bold leading-[1.05] mb-6"
