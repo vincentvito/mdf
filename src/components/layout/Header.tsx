@@ -87,7 +87,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             alt="Milano Drinks Factory"
             width={480}
             height={120}
-            className="h-48 md:h-60 w-auto"
+            className="h-36 md:h-44 w-auto"
             priority
           />
         </button>
