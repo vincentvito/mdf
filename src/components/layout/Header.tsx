@@ -66,73 +66,75 @@ export default function Header({ locale, translations: t }: HeaderProps) {
   const barColor = "bg-white";
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        backgroundColor: `rgba(13, 13, 13, ${scrollProgress * 0.95})`,
-        backdropFilter: `blur(${scrollProgress * 12}px)`,
-        WebkitBackdropFilter: `blur(${scrollProgress * 12}px)`,
-      }}
-    >
-      <div
-        className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300"
-        style={{ height: `${80 - scrollProgress * 8}px` }}
+    <>
+      <header
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          backgroundColor: `rgba(13, 13, 13, ${scrollProgress * 0.95})`,
+          backdropFilter: `blur(${scrollProgress * 12}px)`,
+          WebkitBackdropFilter: `blur(${scrollProgress * 12}px)`,
+        }}
       >
-        <button
-          onClick={() => scrollTo("#hero")}
-          className="relative z-50"
+        <div
+          className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300"
+          style={{ height: `${80 - scrollProgress * 8}px` }}
         >
-          <Image
-            src="/images/logo-white.png"
-            alt="Milano Drinks Factory"
-            width={64}
-            height={64}
-            className="h-14 md:h-16 w-auto transition-all duration-300"
-            priority
-          />
-        </button>
+          <button
+            onClick={() => scrollTo("#hero")}
+            className="relative z-50"
+          >
+            <Image
+              src="/images/logo-white.png"
+              alt="Milano Drinks Factory"
+              width={80}
+              height={80}
+              className="h-16 w-auto transition-all duration-300"
+              priority
+            />
+          </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV_SECTIONS.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className={`text-sm font-medium tracking-wide uppercase transition-colors duration-300 ${
-                activeSection === link.key ? "text-accent" : navTextClass
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {NAV_SECTIONS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => scrollTo(link.href)}
+                className={`text-sm font-medium tracking-wide uppercase transition-colors duration-300 ${
+                  activeSection === link.key ? "text-accent" : navTextClass
+                }`}
+              >
+                {t[link.key]}
+              </button>
+            ))}
+            <LanguageSwitcher locale={locale} dark />
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
+                mobileOpen ? "rotate-45 translate-y-2 !bg-white" : ""
               }`}
-            >
-              {t[link.key]}
-            </button>
-          ))}
-          <LanguageSwitcher locale={locale} dark />
-        </nav>
+            />
+            <span
+              className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
+                mobileOpen ? "-rotate-45 -translate-y-2 !bg-white" : ""
+              }`}
+            />
+          </button>
+        </div>
+      </header>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-2 !bg-white" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 ${barColor} transition-all duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-2 !bg-white" : ""
-            }`}
-          />
-        </button>
-      </div>
-
-      {/* Mobile overlay */}
+      {/* Mobile overlay — outside header to avoid backdrop-filter containing block */}
       <div
         className={`lg:hidden fixed inset-0 z-40 bg-primary-dark transition-opacity duration-300 ${
           mobileOpen
@@ -140,7 +142,14 @@ export default function Header({ locale, translations: t }: HeaderProps) {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col items-center justify-center h-full gap-8">
+        <nav className="flex flex-col items-center justify-center h-full gap-6">
+          <Image
+            src="/images/logo-white.png"
+            alt="Milano Drinks Factory"
+            width={120}
+            height={120}
+            className="h-28 w-auto mb-4"
+          />
           {NAV_SECTIONS.map((link) => (
             <button
               key={link.href}
@@ -157,6 +166,6 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           <LanguageSwitcher locale={locale} />
         </nav>
       </div>
-    </header>
+    </>
   );
 }
