@@ -52,7 +52,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
 
   const scrollTo = (href: string) => {
     if (lenis) {
-      lenis.scrollTo(href, { offset: -272 });
+      lenis.scrollTo(href, { offset: -80 });
     } else {
       const id = href.replace("#", "");
       const el = document.getElementById(id);
@@ -76,7 +76,7 @@ export default function Header({ locale, translations: t }: HeaderProps) {
     >
       <div
         className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300"
-        style={{ height: `${272 - scrollProgress * 32}px` }}
+        style={{ height: `${80 - scrollProgress * 8}px` }}
       >
         <button
           onClick={() => scrollTo("#hero")}
@@ -85,9 +85,9 @@ export default function Header({ locale, translations: t }: HeaderProps) {
           <Image
             src="/images/logo-white.png"
             alt="Milano Drinks Factory"
-            width={480}
-            height={120}
-            className="h-36 md:h-44 w-auto"
+            width={64}
+            height={64}
+            className="h-14 md:h-16 w-auto transition-all duration-300"
             priority
           />
         </button>
